@@ -1,7 +1,8 @@
 import pygame as pg
 from utils import *
 from functions import time
-
+from clases import Celda, Persona
+import random as ra
 
 pg.display.set_caption("Life")
 refreshT = pg.time.Clock()
@@ -40,34 +41,18 @@ class Partida():
             for eventos in pg.event.get():
                 if eventos.type == pg.QUIT:
                     gameOn = False
-            self.draw_world()
+           
             self.mainScreen.fill((color_blanco))
-            pg.draw.rect(self.mainScreen,color_negro,(self.screenX-self.screenX,self.screenY-self.screenY,self.screenX//3,self.screenY//4))
-            pg.draw.rect(self.mainScreen,color_verde,(self.screenX+5,self.screenY +5,self.screenX//3-10,self.screenY//4-10))
-            pg.draw.rect(self.mainScreen,color_negro,(self.screenX//3,self.screenY-self.screenY,self.screenX//3,self.screenY//4))
-            pg.draw.rect(self.mainScreen,color_verde,(self.screenX//3 +5,self.screenY-self.screenY-5,self.screenX//3-10,self.screenY//4-10))
-            
+            celda1.draw(self.screenX,self.screenY,self.mainScreen)
             pg.display.flip()
-    def draw_world (self):
-        pg.draw.rect(self.mainScreen,color_negro,(self.screenX//3,self.screenY,self.screenX//3,self.screenY//4))
+   
     
-class Persona():
-    def __init__(self):
-        self.name = ""
-        self.age = 0
-        self.sex = ""
-        self.health = True
-        self.hunger = 0
-        self.thirst = 0
-
-    def dibujar(self,surface):
-        pass
-        #pg.draw.rect(surface,(1,1,1),(self.pos_x,self.pos_y,self.w,self.h)) 
+ 
          
          
 juego = Partida()
+celda1 = Celda(screenX-screenX,screenY-screenY)    
 juego.bucleLife()    
-    
     
     
     
